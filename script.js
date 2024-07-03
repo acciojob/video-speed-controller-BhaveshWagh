@@ -33,12 +33,12 @@ playbackSpeedInput.addEventListener('input', () => {
 
 // Rewind 10 seconds
 rewindButton.addEventListener('click', () => {
-  video.currentTime -= 10;
+  video.currentTime = Math.max(0, video.currentTime - 10); // Ensure time does not go below 0
 });
 
 // Skip forward 25 seconds
 forwardButton.addEventListener('click', () => {
-  video.currentTime += 25;
+  video.currentTime = Math.min(video.duration, video.currentTime + 25); // Ensure time does not go beyond duration
 });
 
 // Update progress bar
